@@ -1,0 +1,5 @@
+export const MESSAGE = 'message'
+export const INVITE_VIDEO = 'invite-video'
+export const END_SESSION = 'end-session'
+export const TYPING_INDICATOR = 'typing-indicator'
+export const CONNECTION = 'connection'
