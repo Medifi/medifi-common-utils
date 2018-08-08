@@ -25,6 +25,7 @@ serializer(user, dateSent, messageString) // is equal to Signal.serializers.mess
 ```
 
 NOTE: The user object should be a user with an `id`, `fullName` and `role` property
+NOTE: The message object should be a a message with an `id` and `body` property
 
 ## Signal types
 

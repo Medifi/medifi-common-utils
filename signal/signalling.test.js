@@ -6,6 +6,11 @@ const user = {
   role: 'Doctor'
 }
 
+const message = {
+  id: '1',
+  body: 'body'
+}
+
 describe('serializers', () => {
   const constantDate = new Date('2018-01-01T12:00:00')
   const RealDate = global.Date
@@ -29,8 +34,14 @@ describe('serializers', () => {
 
   describe('message', () => {
     it('matches snapshot', () => {
-      const result = Signal.serializers.message(user, new Date(), 'Hello')
+      const result = Signal.serializers.message(user, new Date(), message)
       expect(result).toMatchSnapshot()
+    })
+
+    it('throws an error on invalid message', () => {
+      expect(() => {
+        Signal.serializers.message(user, new Date(), { id: '1', message: 'message!' })
+      }).toThrow('expected message to contain id and body')
     })
   })
 
@@ -70,9 +81,9 @@ describe('serializers', () => {
 
 describe('parsing', () => {
   it('successfully parses a message signal', () => {
-    const messageSignal = Signal.serializers.message(user, new Date(), 'this is a message')
+    const messageSignal = Signal.serializers.message(user, new Date(), message)
     const result = Signal.parseSignal(messageSignal)
-    expect(result).toEqual(expect.objectContaining({ user, message: 'this is a message' }))
+    expect(result).toEqual(expect.objectContaining({ user, body: message.body, id: message.id }))
   })
 
   it('parses a typing signal', () => {
@@ -103,8 +114,8 @@ describe('parsing', () => {
 describe('getSerializer', () => {
   it('parses a signal message', () => {
     const serializer = Signal.serializers.getSerializer(Signal.types.MESSAGE)
-    const messageSignal = serializer(user, new Date(), 'this is a message')
+    const messageSignal = serializer(user, new Date(), message)
     const result = Signal.parseSignal(messageSignal)
-    expect(result).toEqual(expect.objectContaining({ user, message: 'this is a message' }))
+    expect(result).toEqual(expect.objectContaining({ user, body: message.body, id: message.id }))
   })
 })

@@ -6,7 +6,7 @@ exports[`serializers end-session matches snapshot 1`] = `"{\\"dateSent\\":151477
 
 exports[`serializers invite to video matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
-exports[`serializers message matches snapshot 1`] = `"{\\"message\\":\\"Hello\\",\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
+exports[`serializers message matches snapshot 1`] = `"{\\"id\\":\\"1\\",\\"body\\":\\"body\\",\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
 exports[`serializers typing matches snapshot 1`] = `"{\\"isTyping\\":true,\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 

@@ -13,8 +13,14 @@ const serializeSignal = (user, dateSent = null, payload = null) => {
   return JSON.stringify(data)
 }
 
-const message = (user, dateSent, message) =>
-  serializeSignal(user, dateSent, { message })
+const message = (user, dateSent, message) => {
+  if (!message.id || !message.body) {
+    throw new Error('expected message to contain id and body')
+  }
+
+  const { id, body } = message
+  return serializeSignal(user, dateSent, { id, body })
+}
 
 const typing = (user, dateSent, isTyping = true) =>
   // cast anything to boolean
