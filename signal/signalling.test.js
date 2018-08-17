@@ -84,30 +84,36 @@ describe('parsing', () => {
     const messageSignal = Signal.serializers.message(user, new Date(), message)
     const result = Signal.parseSignal(messageSignal)
     expect(result).toEqual(expect.objectContaining({ user, body: message.body, id: message.id }))
+    expect(result).toMatchSnapshot()
   })
 
   it('parses a typing signal', () => {
     const typingSignal = Signal.serializers.typing(user, new Date(), true)
     const result = Signal.parseSignal(typingSignal)
+    console.log('typing signal:', result)
     expect(result).toEqual(expect.objectContaining({ user, isTyping: true }))
+    expect(result).toMatchSnapshot()
   })
 
   it('parses an end session signal', () => {
     const endSignal = Signal.serializers.endSession(user, new Date(), true)
     const result = Signal.parseSignal(endSignal)
     expect(result).toEqual(expect.objectContaining({ user }))
+    expect(result).toMatchSnapshot()
   })
 
   it('parses an invite to video signal', () => {
     const inviteSignal = Signal.serializers.inviteToVideo(user, new Date(), true)
     const result = Signal.parseSignal(inviteSignal)
     expect(result).toEqual(expect.objectContaining({ user }))
+    expect(result).toMatchSnapshot()
   })
 
   it('parses a connection signal', () => {
     const connectionSignal = Signal.serializers.connection(user, new Date(), true)
     const result = Signal.parseSignal(connectionSignal)
     expect(result).toEqual(expect.objectContaining({ user, ready: true }))
+    expect(result).toMatchSnapshot()
   })
 })
 

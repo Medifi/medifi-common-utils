@@ -1,5 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`parsing parses a connection signal 1`] = `
+Object {
+  "dateSent": 2018-01-01T04:00:00.000Z,
+  "ready": true,
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
+exports[`parsing parses a typing signal 1`] = `
+Object {
+  "dateSent": 2018-01-01T04:00:00.000Z,
+  "isTyping": true,
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
+exports[`parsing parses an end session signal 1`] = `
+Object {
+  "dateSent": 2018-01-01T04:00:00.000Z,
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
+exports[`parsing parses an invite to video signal 1`] = `
+Object {
+  "dateSent": 2018-01-01T04:00:00.000Z,
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
+exports[`parsing successfully parses a message signal 1`] = `
+Object {
+  "body": "body",
+  "dateSent": 2018-01-01T04:00:00.000Z,
+  "id": "1",
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
 exports[`serializers connection matches snapshot 1`] = `"{\\"ready\\":true,\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
 exports[`serializers end-session matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
