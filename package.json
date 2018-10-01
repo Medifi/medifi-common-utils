@@ -2,14 +2,18 @@
   "name": "medifi-common-utils",
   "version": "1.0.0",
   "description": "Common utilities for mobile and web apps",
-  "main": "index.js",
+  "main": "build/index.js",
   "license": "UNLICENSED",
   "repository": "https://github.com/medifi/medifi-common-utils",
   "author": "Sieg Collado",
   "scripts": {
-    "test": "$(npm bin)/jest"
+    "clean": "rm -rf build && mkdir build",
+    "build": "yarn run clean && $(npm bin)/babel src/ -d build --ignore test.js",
+    "test": "$(npm bin)/jest",
+    "postinstall": "rm -rf src/ .babelrc"
   },
   "devDependencies": {
+    "babel-cli": "^6.0.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^23.4.2",
     "babel-preset-env": "^1.7.0",
