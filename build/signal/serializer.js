@@ -58,12 +58,16 @@ var inviteToVideo = function inviteToVideo(user, dateSent) {
   return serializeSignal(user, dateSent, null);
 };
 
+var respondToVideoRequest = function respondToVideoRequest(user, dateSent, response) {
+  return serializeSignal(user, dateSent, { response: !!response });
+};
+
 var connection = function connection(user, dateSent) {
   var ready = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
   return serializeSignal(user, dateSent, { ready: !!ready });
 };
 
-var mapping = (_mapping = {}, _defineProperty(_mapping, types.MESSAGE, message), _defineProperty(_mapping, types.INVITE_VIDEO, inviteToVideo), _defineProperty(_mapping, types.END_SESSION, endSession), _defineProperty(_mapping, types.TYPING_INDICATOR, typing), _defineProperty(_mapping, types.CONNECTION, connection), _mapping);
+var mapping = (_mapping = {}, _defineProperty(_mapping, types.MESSAGE, message), _defineProperty(_mapping, types.INVITE_VIDEO, inviteToVideo), _defineProperty(_mapping, types.END_SESSION, endSession), _defineProperty(_mapping, types.TYPING_INDICATOR, typing), _defineProperty(_mapping, types.CONNECTION, connection), _defineProperty(_mapping, types.RESPOND_TO_VIDEO_REQUEST, respondToVideoRequest), _mapping);
 
 var getSerializer = exports.getSerializer = function getSerializer(type) {
   return mapping[type];
@@ -75,6 +79,7 @@ exports.default = {
   typing: typing,
   endSession: endSession,
   inviteToVideo: inviteToVideo,
+  respondToVideoRequest: respondToVideoRequest,
   connection: connection,
   getSerializer: getSerializer
 };
