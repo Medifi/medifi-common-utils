@@ -15,6 +15,7 @@ Signal.parseSignal // Parses a signal regardless of type
 
 Signal.serializers.connection(user, dateSent, ready)
 Signal.serializers.inviteToVideo(user, dateSent)
+Signal.serializers.respondToVideoRequest(user, dateSent, true /* response */)
 Signal.serializers.message(user, dateSent, messageString)
 Signal.serializers.typing(user, dateSent, isTyping)
 Signal.serializers.endSession(user, dateSent)
