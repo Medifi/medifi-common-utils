@@ -71,6 +71,13 @@ describe('serializers', () => {
     })
   })
 
+  describe('respond to video', () => {
+    it('matches snapshot', () => {
+      const result = Signal.serializers.respondToVideoRequest(user, new Date(), true)
+      expect(result).toMatchSnapshot()
+    })
+  })
+
   describe('connection', () => {
     it('matches snapshot', () => {
       const result = Signal.serializers.connection(user, new Date(), true)
@@ -105,6 +112,13 @@ describe('parsing', () => {
   it('parses an invite to video signal', () => {
     const inviteSignal = Signal.serializers.inviteToVideo(user, new Date(), true)
     const result = Signal.parseSignal(inviteSignal)
+    expect(result).toEqual(expect.objectContaining({ user }))
+    expect(result).toMatchSnapshot()
+  })
+
+  it('parses a respond to video signal', () => {
+    const respondSignal = Signal.serializers.respondToVideoRequest(user, new Date(), true)
+    const result = Signal.parseSignal(respondSignal)
     expect(result).toEqual(expect.objectContaining({ user }))
     expect(result).toMatchSnapshot()
   })

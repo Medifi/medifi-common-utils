@@ -12,6 +12,18 @@ Object {
 }
 `;
 
+exports[`parsing parses a respond to video signal 1`] = `
+Object {
+  "dateSent": 2018-01-01T04:00:00.000Z,
+  "response": true,
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
 exports[`parsing parses a typing signal 1`] = `
 Object {
   "dateSent": 2018-01-01T04:00:00.000Z,
@@ -66,6 +78,8 @@ exports[`serializers end-session matches snapshot 1`] = `"{\\"dateSent\\":151477
 exports[`serializers invite to video matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
 exports[`serializers message matches snapshot 1`] = `"{\\"id\\":\\"1\\",\\"body\\":\\"body\\",\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
+
+exports[`serializers respond to video matches snapshot 1`] = `"{\\"response\\":true,\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
 exports[`serializers typing matches snapshot 1`] = `"{\\"isTyping\\":true,\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
