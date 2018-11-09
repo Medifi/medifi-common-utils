@@ -1,6 +1,6 @@
 {
   "name": "medifi-common-utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Common utilities for mobile and web apps",
   "main": "build/index.js",
   "license": "UNLICENSED",
