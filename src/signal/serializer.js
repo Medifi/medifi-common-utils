@@ -29,22 +29,22 @@ const typing = (user, dateSent, isTyping = true) =>
 const endSession = (user, dateSent) =>
   serializeSignal(user, dateSent, null)
 
-const inviteToVideo = (user, dateSent) =>
-  serializeSignal(user, dateSent, null)
+const rejectVideoInvite = (user, dateSent) =>
+  serializeSignal(user, dateSent)
 
-const respondToVideoRequest = (user, dateSent, response) =>
-  serializeSignal(user, dateSent, { response: !!response })
+const endVideoCall = (user, dateSent) =>
+  serializeSignal(user, dateSent)
 
 const connection = (user, dateSent, ready = true) =>
   serializeSignal(user, dateSent, { ready: !!ready })
 
 const mapping = {
   [types.MESSAGE]: message,
-  [types.INVITE_VIDEO]: inviteToVideo,
   [types.END_SESSION]: endSession,
   [types.TYPING_INDICATOR]: typing,
   [types.CONNECTION]: connection,
-  [types.RESPOND_TO_VIDEO_REQUEST]: respondToVideoRequest
+  [types.END_VIDEO_CALL]: endVideoCall,
+  [types.REJECT_VIDEO_INVITE]: rejectVideoInvite
 }
 
 export const getSerializer = (type) => mapping[type]
@@ -54,8 +54,8 @@ export default {
   message,
   typing,
   endSession,
-  inviteToVideo,
-  respondToVideoRequest,
   connection,
+  rejectVideoInvite,
+  endVideoCall,
   getSerializer
 }

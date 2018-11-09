@@ -54,12 +54,12 @@ var endSession = function endSession(user, dateSent) {
   return serializeSignal(user, dateSent, null);
 };
 
-var inviteToVideo = function inviteToVideo(user, dateSent) {
-  return serializeSignal(user, dateSent, null);
+var rejectVideoInvite = function rejectVideoInvite(user, dateSent) {
+  return serializeSignal(user, dateSent);
 };
 
-var respondToVideoRequest = function respondToVideoRequest(user, dateSent, response) {
-  return serializeSignal(user, dateSent, { response: !!response });
+var endVideoCall = function endVideoCall(user, dateSent) {
+  return serializeSignal(user, dateSent);
 };
 
 var connection = function connection(user, dateSent) {
@@ -67,7 +67,7 @@ var connection = function connection(user, dateSent) {
   return serializeSignal(user, dateSent, { ready: !!ready });
 };
 
-var mapping = (_mapping = {}, _defineProperty(_mapping, types.MESSAGE, message), _defineProperty(_mapping, types.INVITE_VIDEO, inviteToVideo), _defineProperty(_mapping, types.END_SESSION, endSession), _defineProperty(_mapping, types.TYPING_INDICATOR, typing), _defineProperty(_mapping, types.CONNECTION, connection), _defineProperty(_mapping, types.RESPOND_TO_VIDEO_REQUEST, respondToVideoRequest), _mapping);
+var mapping = (_mapping = {}, _defineProperty(_mapping, types.MESSAGE, message), _defineProperty(_mapping, types.END_SESSION, endSession), _defineProperty(_mapping, types.TYPING_INDICATOR, typing), _defineProperty(_mapping, types.CONNECTION, connection), _defineProperty(_mapping, types.END_VIDEO_CALL, endVideoCall), _defineProperty(_mapping, types.REJECT_VIDEO_INVITE, rejectVideoInvite), _mapping);
 
 var getSerializer = exports.getSerializer = function getSerializer(type) {
   return mapping[type];
@@ -78,8 +78,8 @@ exports.default = {
   message: message,
   typing: typing,
   endSession: endSession,
-  inviteToVideo: inviteToVideo,
-  respondToVideoRequest: respondToVideoRequest,
   connection: connection,
+  rejectVideoInvite: rejectVideoInvite,
+  endVideoCall: endVideoCall,
   getSerializer: getSerializer
 };

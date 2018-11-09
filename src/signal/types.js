@@ -1,6 +1,6 @@
 export const MESSAGE = 'message'
-export const INVITE_VIDEO = 'invite-video'
-export const RESPOND_TO_VIDEO_REQUEST = 'respond-video'
+export const REJECT_VIDEO_INVITE = 'reject-video-invite'
+export const END_VIDEO_CALL = 'end-video-call'
 export const END_SESSION = 'end-session'
 export const TYPING_INDICATOR = 'typing-indicator'
 export const CONNECTION = 'connection'
