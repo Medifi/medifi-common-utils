@@ -14,11 +14,17 @@ Signal.types // Object containing our signal types
 Signal.parseSignal // Parses a signal regardless of type
 
 Signal.serializers.connection(user, dateSent, ready)
-Signal.serializers.inviteToVideo(user, dateSent)
-Signal.serializers.respondToVideoRequest(user, dateSent, true /* response */)
 Signal.serializers.message(user, dateSent, messageString)
 Signal.serializers.typing(user, dateSent, isTyping)
 Signal.serializers.endSession(user, dateSent)
+
+// for video
+Signal.serializers.requestVideoCall(user, dateSent)
+Signal.serializers.cancelVideoCallRequest(user, dateSent)
+Signal.serializers.acceptVideoInvite(user, dateSent)
+Signal.serializers.rejectVideoInvite(user, dateSent)
+Signal.serializers.endVideoCall(user, dateSent)
+
 // ... etc
 let serializer = Signal.serializers.getSerializer(Signal.types.MESSAGE)
 serializer(user, dateSent, messageString) // is equal to Signal.serializers.message
