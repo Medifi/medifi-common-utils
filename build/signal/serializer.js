@@ -54,6 +54,20 @@ var endSession = function endSession(user, dateSent) {
   return serializeSignal(user, dateSent, null);
 };
 
+// for video
+
+var requestVideoCall = function requestVideoCall(user, dateSent) {
+  return serializeSignal(user, dateSent);
+};
+
+var cancelVideoCallRequest = function cancelVideoCallRequest(user, dateSent) {
+  return serializeSignal(user, dateSent);
+};
+
+var acceptVideoInvite = function acceptVideoInvite(user, dateSent) {
+  return serializeSignal(user, dateSent);
+};
+
 var rejectVideoInvite = function rejectVideoInvite(user, dateSent) {
   return serializeSignal(user, dateSent);
 };
@@ -67,7 +81,7 @@ var connection = function connection(user, dateSent) {
   return serializeSignal(user, dateSent, { ready: !!ready });
 };
 
-var mapping = (_mapping = {}, _defineProperty(_mapping, types.MESSAGE, message), _defineProperty(_mapping, types.END_SESSION, endSession), _defineProperty(_mapping, types.TYPING_INDICATOR, typing), _defineProperty(_mapping, types.CONNECTION, connection), _defineProperty(_mapping, types.END_VIDEO_CALL, endVideoCall), _defineProperty(_mapping, types.REJECT_VIDEO_INVITE, rejectVideoInvite), _mapping);
+var mapping = (_mapping = {}, _defineProperty(_mapping, types.MESSAGE, message), _defineProperty(_mapping, types.END_SESSION, endSession), _defineProperty(_mapping, types.TYPING_INDICATOR, typing), _defineProperty(_mapping, types.CONNECTION, connection), _defineProperty(_mapping, types.REQUEST_VIDEO_CALL, requestVideoCall), _defineProperty(_mapping, types.REQUEST_VIDEO_CALL_CANCEL, cancelVideoCallRequest), _defineProperty(_mapping, types.ACCEPT_VIDEO_INVITE, acceptVideoInvite), _defineProperty(_mapping, types.REJECT_VIDEO_INVITE, rejectVideoInvite), _defineProperty(_mapping, types.END_VIDEO_CALL, endVideoCall), _mapping);
 
 var getSerializer = exports.getSerializer = function getSerializer(type) {
   return mapping[type];
@@ -79,6 +93,9 @@ exports.default = {
   typing: typing,
   endSession: endSession,
   connection: connection,
+  requestVideoCall: requestVideoCall,
+  cancelVideoCallRequest: cancelVideoCallRequest,
+  acceptVideoInvite: acceptVideoInvite,
   rejectVideoInvite: rejectVideoInvite,
   endVideoCall: endVideoCall,
   getSerializer: getSerializer
