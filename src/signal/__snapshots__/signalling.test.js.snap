@@ -34,10 +34,43 @@ Object {
 }
 `;
 
+exports[`parsing parses a request video call cancel signal 1`] = `
+Object {
+  "dateSent": 2018-01-01T04:00:00.000Z,
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
+exports[`parsing parses a request video call signal 1`] = `
+Object {
+  "dateSent": 2018-01-01T04:00:00.000Z,
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
 exports[`parsing parses a typing signal 1`] = `
 Object {
   "dateSent": 2018-01-01T04:00:00.000Z,
   "isTyping": true,
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
+exports[`parsing parses an accept video invite signal 1`] = `
+Object {
+  "dateSent": 2018-01-01T04:00:00.000Z,
   "user": Object {
     "fullName": "Sieg Collado",
     "id": "1",
@@ -74,12 +107,18 @@ exports[`serializers connection matches snapshot 1`] = `"{\\"ready\\":true,\\"da
 
 exports[`serializers end-session matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
-exports[`serializers ending a video call matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
-
 exports[`serializers message matches snapshot 1`] = `"{\\"id\\":\\"1\\",\\"body\\":\\"body\\",\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
-
-exports[`serializers rejecting a video invite matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
 exports[`serializers typing matches snapshot 1`] = `"{\\"isTyping\\":true,\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
 exports[`serializers typing matches snapshot on false 1`] = `"{\\"isTyping\\":false,\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
+
+exports[`serializers video call events accepting a video invite matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
+
+exports[`serializers video call events cancelling a video call matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
+
+exports[`serializers video call events ending a video call matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
+
+exports[`serializers video call events initiating a video call matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
+
+exports[`serializers video call events rejecting a video invite matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;

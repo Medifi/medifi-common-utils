@@ -64,17 +64,40 @@ describe('serializers', () => {
     })
   })
 
-  describe('rejecting a video invite', () => {
-    it('matches snapshot', () => {
-      const result = Signal.serializers.rejectVideoInvite(user, new Date())
-      expect(result).toMatchSnapshot()
+  describe('video call events', () => {
+    describe('initiating a video call', () => {
+      it('matches snapshot', () => {
+        const result = Signal.serializers.requestVideoCall(user, new Date())
+        expect(result).toMatchSnapshot()
+      })
     })
-  })
 
-  describe('ending a video call', () => {
-    it('matches snapshot', () => {
-      const result = Signal.serializers.endVideoCall(user, new Date())
-      expect(result).toMatchSnapshot()
+    describe('cancelling a video call', () => {
+      it('matches snapshot', () => {
+        const result = Signal.serializers.requestVideoCall(user, new Date())
+        expect(result).toMatchSnapshot()
+      })
+    })
+
+    describe('accepting a video invite', () => {
+      it('matches snapshot', () => {
+        const result = Signal.serializers.acceptVideoInvite(user, new Date())
+        expect(result).toMatchSnapshot()
+      })
+    })
+
+    describe('rejecting a video invite', () => {
+      it('matches snapshot', () => {
+        const result = Signal.serializers.rejectVideoInvite(user, new Date())
+        expect(result).toMatchSnapshot()
+      })
+    })
+
+    describe('ending a video call', () => {
+      it('matches snapshot', () => {
+        const result = Signal.serializers.endVideoCall(user, new Date())
+        expect(result).toMatchSnapshot()
+      })
     })
   })
 
@@ -105,6 +128,27 @@ describe('parsing', () => {
   it('parses an end session signal', () => {
     const endSignal = Signal.serializers.endSession(user, new Date(), true)
     const result = Signal.parseSignal(endSignal)
+    expect(result).toEqual(expect.objectContaining({ user }))
+    expect(result).toMatchSnapshot()
+  })
+
+  it('parses a request video call signal', () => {
+    const signal = Signal.serializers.requestVideoCall(user, new Date())
+    const result = Signal.parseSignal(signal)
+    expect(result).toEqual(expect.objectContaining({ user }))
+    expect(result).toMatchSnapshot()
+  })
+
+  it('parses a request video call cancel signal', () => {
+    const signal = Signal.serializers.cancelVideoCallRequest(user, new Date())
+    const result = Signal.parseSignal(signal)
+    expect(result).toEqual(expect.objectContaining({ user }))
+    expect(result).toMatchSnapshot()
+  })
+
+  it('parses an accept video invite signal', () => {
+    const signal = Signal.serializers.acceptVideoInvite(user, new Date())
+    const result = Signal.parseSignal(signal)
     expect(result).toEqual(expect.objectContaining({ user }))
     expect(result).toMatchSnapshot()
   })
