@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`parsing medical document signal parses with type E_PRESCRIPTION 1`] = `
+Object {
+  "dateSent": 2018-01-01T04:00:00.000Z,
+  "type": "E_PRESCRIPTION",
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
+exports[`parsing medical document signal parses with type MEDICAL_CERTIFICATE 1`] = `
+Object {
+  "dateSent": 2018-01-01T04:00:00.000Z,
+  "type": "MEDICAL_CERTIFICATE",
+  "user": Object {
+    "fullName": "Sieg Collado",
+    "id": "1",
+    "role": "Doctor",
+  },
+}
+`;
+
 exports[`parsing parses a connection signal 1`] = `
 Object {
   "dateSent": 2018-01-01T04:00:00.000Z,
@@ -108,6 +132,10 @@ exports[`serializers connection matches snapshot 1`] = `"{\\"ready\\":true,\\"da
 exports[`serializers end-session matches snapshot 1`] = `"{\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
 exports[`serializers message matches snapshot 1`] = `"{\\"id\\":\\"1\\",\\"body\\":\\"body\\",\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
+
+exports[`serializers sending medical document with type E_PRESCRIPTION matches snapshot 1`] = `"{\\"type\\":\\"E_PRESCRIPTION\\",\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
+
+exports[`serializers sending medical document with type MEDICAL_CERTIFICATE matches snapshot 1`] = `"{\\"type\\":\\"MEDICAL_CERTIFICATE\\",\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 
 exports[`serializers typing matches snapshot 1`] = `"{\\"isTyping\\":true,\\"dateSent\\":1514779200000,\\"user\\":{\\"id\\":\\"1\\",\\"fullName\\":\\"Sieg Collado\\",\\"role\\":\\"Doctor\\"}}"`;
 

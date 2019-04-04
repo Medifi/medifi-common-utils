@@ -2,6 +2,7 @@ export const MESSAGE = 'message'
 export const END_SESSION = 'end-session'
 export const TYPING_INDICATOR = 'typing-indicator'
 export const CONNECTION = 'connection'
+export const SEND_MEDICAL_DOCUMENT = 'send-medical-document'
 
 // For video
 export const REQUEST_VIDEO_CALL = 'request-video-call'

@@ -107,6 +107,30 @@ describe('serializers', () => {
       expect(result).toMatchSnapshot()
     })
   })
+
+  describe('sending medical document', () => {
+    describe('with type E_PRESCRIPTION', () => {
+      it('matches snapshot', () => {
+        const result = Signal.serializers.sendMedicalDocument(
+          user,
+          new Date,
+          Signal.medicalDocumentTypes.E_PRESCRIPTION
+        )
+        expect(result).toMatchSnapshot()
+      })
+    })
+
+    describe('with type MEDICAL_CERTIFICATE', () => {
+      it('matches snapshot', () => {
+        const result = Signal.serializers.sendMedicalDocument(
+          user,
+          new Date,
+          Signal.medicalDocumentTypes.MEDICAL_CERTIFICATE
+        )
+        expect(result).toMatchSnapshot()
+      })
+    })
+  })
 })
 
 describe('parsing', () => {
@@ -172,6 +196,37 @@ describe('parsing', () => {
     const result = Signal.parseSignal(connectionSignal)
     expect(result).toEqual(expect.objectContaining({ user, ready: true }))
     expect(result).toMatchSnapshot()
+  })
+
+  describe('medical document signal', () => {
+    it('parses with type E_PRESCRIPTION', () => {
+      const signal = Signal.serializers.sendMedicalDocument(
+        user,
+        new Date(),
+        Signal.medicalDocumentTypes.E_PRESCRIPTION
+      )
+      const result = Signal.parseSignal(signal)
+      expect(result).toEqual(expect.objectContaining({
+        user,
+        type: Signal.medicalDocumentTypes.E_PRESCRIPTION
+      }))
+      expect(result).toMatchSnapshot()
+    })
+
+    it('parses with type MEDICAL_CERTIFICATE', () => {
+      const signal = Signal.serializers.sendMedicalDocument(
+        user,
+        new Date(),
+        Signal.medicalDocumentTypes.MEDICAL_CERTIFICATE
+      )
+      const result = Signal.parseSignal(signal)
+      expect(result).toEqual(expect.objectContaining({
+        user,
+        type: Signal.medicalDocumentTypes.MEDICAL_CERTIFICATE
+      }))
+      expect(result).toMatchSnapshot()
+    })
+
   })
 })
 

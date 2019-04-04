@@ -7,6 +7,7 @@ var MESSAGE = exports.MESSAGE = 'message';
 var END_SESSION = exports.END_SESSION = 'end-session';
 var TYPING_INDICATOR = exports.TYPING_INDICATOR = 'typing-indicator';
 var CONNECTION = exports.CONNECTION = 'connection';
+var SEND_MEDICAL_DOCUMENT = exports.SEND_MEDICAL_DOCUMENT = 'send-medical-document';
 
 // For video
 var REQUEST_VIDEO_CALL = exports.REQUEST_VIDEO_CALL = 'request-video-call';

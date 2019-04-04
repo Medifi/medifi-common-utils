@@ -42,6 +42,12 @@ var message = function message(user, dateSent, _message) {
   return serializeSignal(user, dateSent, { id: id, body: body });
 };
 
+var sendMedicalDocument = function sendMedicalDocument(user, dateSent, type) {
+  if (!type) throw new Error('expected to medical document type');
+
+  return serializeSignal(user, dateSent, { type: type });
+};
+
 var typing = function typing(user, dateSent) {
   var isTyping = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
   return (
@@ -81,7 +87,7 @@ var connection = function connection(user, dateSent) {
   return serializeSignal(user, dateSent, { ready: !!ready });
 };
 
-var mapping = (_mapping = {}, _defineProperty(_mapping, types.MESSAGE, message), _defineProperty(_mapping, types.END_SESSION, endSession), _defineProperty(_mapping, types.TYPING_INDICATOR, typing), _defineProperty(_mapping, types.CONNECTION, connection), _defineProperty(_mapping, types.REQUEST_VIDEO_CALL, requestVideoCall), _defineProperty(_mapping, types.REQUEST_VIDEO_CALL_CANCEL, cancelVideoCallRequest), _defineProperty(_mapping, types.ACCEPT_VIDEO_INVITE, acceptVideoInvite), _defineProperty(_mapping, types.REJECT_VIDEO_INVITE, rejectVideoInvite), _defineProperty(_mapping, types.END_VIDEO_CALL, endVideoCall), _mapping);
+var mapping = (_mapping = {}, _defineProperty(_mapping, types.MESSAGE, message), _defineProperty(_mapping, types.END_SESSION, endSession), _defineProperty(_mapping, types.TYPING_INDICATOR, typing), _defineProperty(_mapping, types.CONNECTION, connection), _defineProperty(_mapping, types.SEND_MEDICAL_DOCUMENT, sendMedicalDocument), _defineProperty(_mapping, types.REQUEST_VIDEO_CALL, requestVideoCall), _defineProperty(_mapping, types.REQUEST_VIDEO_CALL_CANCEL, cancelVideoCallRequest), _defineProperty(_mapping, types.ACCEPT_VIDEO_INVITE, acceptVideoInvite), _defineProperty(_mapping, types.REJECT_VIDEO_INVITE, rejectVideoInvite), _defineProperty(_mapping, types.END_VIDEO_CALL, endVideoCall), _mapping);
 
 var getSerializer = exports.getSerializer = function getSerializer(type) {
   return mapping[type];
@@ -93,6 +99,7 @@ exports.default = {
   typing: typing,
   endSession: endSession,
   connection: connection,
+  sendMedicalDocument: sendMedicalDocument,
   requestVideoCall: requestVideoCall,
   cancelVideoCallRequest: cancelVideoCallRequest,
   acceptVideoInvite: acceptVideoInvite,
