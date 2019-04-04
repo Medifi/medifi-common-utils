@@ -22,6 +22,12 @@ const message = (user, dateSent, message) => {
   return serializeSignal(user, dateSent, { id, body })
 }
 
+const sendMedicalDocument = (user, dateSent, type) => {
+  if (!type) throw new Error('expected to medical document type')
+
+  return serializeSignal(user, dateSent, { type })
+}
+
 const typing = (user, dateSent, isTyping = true) =>
   // cast anything to boolean
   serializeSignal(user, dateSent, { isTyping: !!isTyping })
@@ -54,6 +60,7 @@ const mapping = {
   [types.END_SESSION]: endSession,
   [types.TYPING_INDICATOR]: typing,
   [types.CONNECTION]: connection,
+  [types.SEND_MEDICAL_DOCUMENT]: sendMedicalDocument,
   [types.REQUEST_VIDEO_CALL]: requestVideoCall,
   [types.REQUEST_VIDEO_CALL_CANCEL]: cancelVideoCallRequest,
   [types.ACCEPT_VIDEO_INVITE]: acceptVideoInvite,
@@ -69,6 +76,7 @@ export default {
   typing,
   endSession,
   connection,
+  sendMedicalDocument,
   requestVideoCall,
   cancelVideoCallRequest,
   acceptVideoInvite,
